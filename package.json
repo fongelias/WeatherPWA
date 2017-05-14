@@ -1,0 +1,25 @@
+{
+  "name": "weather_pwa",
+  "version": "1.0.0",
+  "description": "PWA for FCC using openweather API, using google PWA specs",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fongelias/WeatherPWA.git"
+  },
+  "keywords": [
+    "weather",
+    "pwa",
+    "fcc",
+    "openweather"
+  ],
+  "author": "Elias Fong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fongelias/WeatherPWA/issues"
+  },
+  "homepage": "https://github.com/fongelias/WeatherPWA#readme"
+}
