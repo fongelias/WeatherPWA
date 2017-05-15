@@ -1,0 +1,34 @@
+/*-- Variables --*/
+/*--------- Colors --*/
+$skyblue:#82ccf1;
+$mustard:#EFC66A;
+$pink:#d8a6cb;
+$light-purple:#c59dce;
+$pastel-purple:#9996cb;
+
+/*-- Mixins --*/
+@mixin transform($parameters) {
+	-webkit-transform: $parameters;
+			transform: $parameters;
+}
+
+@mixin transform-origin($parameters) {
+	-webkit-transform-origin: $parameters;
+			transform-origin: $parameters;
+}
+
+@mixin animation() {
+	-webkit-animation:;
+		    animation:;
+}
+/*-- Components --*/
+/*--------- Loader --*/
+.loader {
+	position: fixed;
+	#spinner {
+		stroke: $mustard;
+		stroke-width: 0.3rem;
+
+	}
+}
+
