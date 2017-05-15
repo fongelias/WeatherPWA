@@ -7,6 +7,8 @@ $light-purple:#c59dce;
 $pastel-purple:#9996cb;
 
 /*-- Mixins --*/
+@import './mixins/__mixins';
+
 @mixin transform($parameters) {
 	-webkit-transform: $parameters;
 			transform: $parameters;
@@ -17,18 +19,110 @@ $pastel-purple:#9996cb;
 			transform-origin: $parameters;
 }
 
-@mixin animation() {
-	-webkit-animation:;
-		    animation:;
+@mixin animation($animation1, $animation2:'', $animation3:'') {
+	-webkit-animation: $animation1, $animation2, $animation3;
+		    animation: $animation1, $animation2, $animation3;
 }
+
+
+
+/*-- Animations --*/
+/*--------- Rotate --*/
+@-webkit-keyframes rotate {
+  from {
+    @include transform(rotate(0deg));
+  }
+  to {
+    @include transform(rotate(450deg));
+  }
+}
+
+@keyframes rotate {
+	from {
+		@include transform(rotate(0deg));
+	}
+	to {
+		@include transform(rotate(450deg));
+	}
+}
+
+/*--------- Line --*/
+@-webkit-keyframes line {
+	0% {
+		stroke-dasharray: 2, 85.964;
+		@include transform(rotate(0deg));
+	}
+	50% {
+		stroke-dasharray: 65.973, 21.9911;
+		stroke-dashoffset: 0;
+	}
+	100% {
+		stroke-dasharray: 2, 85.964;
+		stroke-dashoffset: -65.973;
+		@include transform(rotate(90deg));
+	}
+}
+
+@keyframes line {
+	0% {
+		stroke-dasharray: 2, 85.964;
+		@include transform(rotate(0deg));
+	}
+	50% {
+		stroke-dasharray: 65.973, 21.9911;
+		stroke-dashoffset: 0;
+	}
+	100% {
+		stroke-dasharray:2, 85.964;
+		stroke-dashoffset: -65.973;
+		@include transform(rotate(90deg));
+	}
+}
+/*-- Primary Containers --*/
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	padding:0;
+	margin: 0;
+	height: 100%;
+	width: 100%;
+	font-weight: 400;
+	font-display: optional;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+html {
+	overflow: hidden;
+}
+
+body {
+	@include flexbox;
+	@include flex-direction(column);
+	@include flex-wrap(nowrap);
+	@include justify-content(flex-start);
+	@include align-items(stretch);
+	@include align-content(stretch);
+	background: #ebebeb;
+}
+
 /*-- Components --*/
+/*--------- Header --*/
+.header {
+
+}
 /*--------- Loader --*/
 .loader {
 	position: fixed;
+	@include transform(translate(-50%, -50%));
 	#spinner {
-		stroke: $mustard;
-		stroke-width: 0.3rem;
-
+		box-sizing: border-box;
+		stroke: $skyblue;
+		stroke-width: 3px;
+		@include transform-origin(50%);
+		@include animation(line 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite, rotate 1.6s linear infinite);
 	}
 }
 

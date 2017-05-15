@@ -1,0 +1,16 @@
+/*-- Transform --*/
+@mixin transform($parameters) {
+	-webkit-transform: $parameters;
+			transform: $parameters;
+}
+
+@mixin transform-origin($parameters) {
+	-webkit-transform-origin: $parameters;
+			transform-origin: $parameters;
+}
+
+/*-- Animation --*/
+@mixin animation($animation1, $animation2:'', $animation3:'') {
+	-webkit-animation: $animation1, $animation2, $animation3;
+		    animation: $animation1, $animation2, $animation3;
+}
