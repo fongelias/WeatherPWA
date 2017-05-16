@@ -77,10 +77,12 @@ body {
 
 	#refresh-icon {
 		fill: white;
+		@include transition(all 0.3s ease);
 	}
 
 	#header-add-icon {
 		fill: white;
+		@include transition(all 0.3s ease);
 	}
 }
 /*--------- Loader --*/

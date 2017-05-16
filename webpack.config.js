@@ -27,7 +27,8 @@ module.exports = {
 			allChunks: true
 		}),
 		new CopyWebpackPlugin([
-			{from: './dev/index.html', to: './index.html'}
+			{from: './dev/index.html', to: './index.html'},
+			{from: './dev/serviceWorker.js', to: './serviceWorker.js'}
 		]),
 	    new webpack.DefinePlugin({
 	      'process.env.NODE_ENV': JSON.stringify('production')
