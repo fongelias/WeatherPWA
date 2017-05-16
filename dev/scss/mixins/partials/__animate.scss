@@ -1,5 +1,5 @@
 /*-- Transform --*/
-@mixin transform($parameters) {
+@mixin transform($parameters) {/*Missing Will-change property*/
 	-webkit-transform: $parameters;
 			transform: $parameters;
 }
@@ -14,3 +14,66 @@
 	-webkit-animation: $animation1, $animation2, $animation3;
 		    animation: $animation1, $animation2, $animation3;
 }
+
+/*-- Keyframes --*/
+/*--------- Rotate --*/
+@-webkit-keyframes rotate {
+  from {
+    @include transform(rotate(0deg));
+  }
+  to {
+    @include transform(rotate(450deg));
+  }
+}
+
+@keyframes rotate {
+	from {
+		@include transform(rotate(0deg));
+	}
+	to {
+		@include transform(rotate(450deg));
+	}
+}
+
+/*--------- Line --*/
+@-webkit-keyframes line {
+	0% {
+		stroke-dasharray: 2, 85.964;
+		@include transform(rotate(0deg));
+	}
+	50% {
+		stroke-dasharray: 65.973, 21.9911;
+		stroke-dashoffset: 0;
+	}
+	100% {
+		stroke-dasharray: 2, 85.964;
+		stroke-dashoffset: -65.973;
+		@include transform(rotate(90deg));
+	}
+}
+
+@keyframes line {
+	0% {
+		stroke-dasharray: 2, 85.964;
+		@include transform(rotate(0deg));
+	}
+	50% {
+		stroke-dasharray: 65.973, 21.9911;
+		stroke-dashoffset: 0;
+	}
+	100% {
+		stroke-dasharray:2, 85.964;
+		stroke-dashoffset: -65.973;
+		@include transform(rotate(90deg));
+	}
+}
+
+
+
+
+
+
+
+
+
+

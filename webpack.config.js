@@ -2,6 +2,7 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
 //Module==================================================================
 module.exports = {
 	entry: { //Where bundler starts
@@ -27,6 +28,13 @@ module.exports = {
 		}),
 		new CopyWebpackPlugin([
 			{from: './dev/index.html', to: './index.html'}
-		])
+		]),
+	    new webpack.DefinePlugin({
+	      'process.env.NODE_ENV': JSON.stringify('production')
+	    })
 	]
 }
+
+
+
+

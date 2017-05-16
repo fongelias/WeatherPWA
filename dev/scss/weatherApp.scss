@@ -1,83 +1,16 @@
 /*-- Variables --*/
+/*--------- Fonts --*/
+$default-fonts: 'Helvetica', sans-serif;
 /*--------- Colors --*/
 $skyblue:#82ccf1;
 $mustard:#EFC66A;
 $pink:#d8a6cb;
-$light-purple:#c59dce;
-$pastel-purple:#9996cb;
+$deep-pink: #c171ac;
+$pastel-purple:#6763b2;
 
 /*-- Mixins --*/
 @import './mixins/__mixins';
 
-@mixin transform($parameters) {
-	-webkit-transform: $parameters;
-			transform: $parameters;
-}
-
-@mixin transform-origin($parameters) {
-	-webkit-transform-origin: $parameters;
-			transform-origin: $parameters;
-}
-
-@mixin animation($animation1, $animation2:'', $animation3:'') {
-	-webkit-animation: $animation1, $animation2, $animation3;
-		    animation: $animation1, $animation2, $animation3;
-}
-
-
-
-/*-- Animations --*/
-/*--------- Rotate --*/
-@-webkit-keyframes rotate {
-  from {
-    @include transform(rotate(0deg));
-  }
-  to {
-    @include transform(rotate(450deg));
-  }
-}
-
-@keyframes rotate {
-	from {
-		@include transform(rotate(0deg));
-	}
-	to {
-		@include transform(rotate(450deg));
-	}
-}
-
-/*--------- Line --*/
-@-webkit-keyframes line {
-	0% {
-		stroke-dasharray: 2, 85.964;
-		@include transform(rotate(0deg));
-	}
-	50% {
-		stroke-dasharray: 65.973, 21.9911;
-		stroke-dashoffset: 0;
-	}
-	100% {
-		stroke-dasharray: 2, 85.964;
-		stroke-dashoffset: -65.973;
-		@include transform(rotate(90deg));
-	}
-}
-
-@keyframes line {
-	0% {
-		stroke-dasharray: 2, 85.964;
-		@include transform(rotate(0deg));
-	}
-	50% {
-		stroke-dasharray: 65.973, 21.9911;
-		stroke-dashoffset: 0;
-	}
-	100% {
-		stroke-dasharray:2, 85.964;
-		stroke-dashoffset: -65.973;
-		@include transform(rotate(90deg));
-	}
-}
 /*-- Primary Containers --*/
 * {
 	box-sizing: border-box;
@@ -89,6 +22,7 @@ html, body {
 	height: 100%;
 	width: 100%;
 	font-weight: 400;
+	font-family: $default-fonts;
 	font-display: optional;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -111,10 +45,48 @@ body {
 /*-- Components --*/
 /*--------- Header --*/
 .header {
+	@include flexbox;
+	@include flex-direction(row);
+	background: $pastel-purple;
+	padding: 0px 16px;
+	box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 2px 9px 1px rgba(0,0,0,0.12), 0 4px 2px -2px rgba(0,0,0,0.2);
 
+	.header-title {
+		font-size: 20px;
+		color: white;
+		@include flex-grow(1);
+	}
+
+	button {
+		-webkit-appearance: none;
+		border: 0px;
+		background: rgba(0,0,0,0);
+		outline: none;
+		cursor: pointer;
+
+		&:hover #refresh-icon,
+		&:hover #header-add-icon {
+			fill: $pink;
+		}
+
+		&:active #refresh-icon,
+		&:active #header-add-icon {
+			fill: $deep-pink;
+		}
+	}
+
+	#refresh-icon {
+		fill: white;
+	}
+
+	#header-add-icon {
+		fill: white;
+	}
 }
 /*--------- Loader --*/
 .loader {
+	top: 50%;
+	left: 50%;
 	position: fixed;
 	@include transform(translate(-50%, -50%));
 	#spinner {

@@ -1,3 +1,5 @@
+/*-- Parent Container Initial Flex Property --*/
+//display: flex | inline-flex
 @mixin flexbox {
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -6,6 +8,16 @@
 	display: flex;
 }
 
+@mixin inline-flex {
+	display: -webkit-inline-box;
+	display: -webkit-inline-flex;
+	display: -moz-inline-flex;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+}
+
+/*-- Parent Container Flex Direction --*/
+//flex-direction: row | row-reverse | column | column-reverse
 @mixin flex-direction($value: row) {
 	@if $value == row-reverse {
 		-webkit-box-direction: reverse;
@@ -26,6 +38,8 @@
 	 	    flex-direction: $value;
 }
 
+/*-- Parent Container Flex Wrap --*/
+//flex-wrap: nowrap | wrap | wrap-reverse;
 @mixin flex-wrap($value: nowrap) {
 	-webkit-flex-wrap: $value;
 	-moz-flex-wrap: $value;
@@ -37,6 +51,18 @@
 	flex-wrap: $value;
 }
 
+/*-- Child Element Flex Grow --*/
+//flex-grow: int
+@mixin flex-grow($int:0) {
+	-webkit-box-flex: $int;
+	-webkit-flex-grow: $int;
+	-moz-flex-grow: $int;
+	-ms-flex-positive: $int;
+	flex-grow: $int;
+}
+
+/*-- Parent Container Justify Content--*/
+//justify-content: flex-start | flex-end | center | space-between | space-around
 @mixin justify-content($value: flex-start) {
 	@if $value == flex-start {
 		-webkit-box-pack: start;
@@ -58,6 +84,8 @@
 	justify-content: $value;
 }
 
+/*-- Parent Container Align Items --*/
+//aligin-items: flex-start | flex-end | center | baseline | stretch;
 @mixin align-items($value: stretch) {
 	@if $value == flex-start {
 		-webkit-box-align: start;
@@ -74,6 +102,8 @@
 	align-items: $value;
 }
 
+/*-- Parent Container Align Content --*/
+//align-content: flex-start | flex-end | center | baseline | stretch;
 @mixin align-content($value: stretch) {
 	-webkit-align-content: $value;
 	-moz-align-content: $value;
@@ -86,3 +116,7 @@
 	}
 	align-content: $value;
 }
+
+
+
+
