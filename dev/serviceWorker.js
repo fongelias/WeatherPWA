@@ -25,7 +25,6 @@ if('serviceWorker' in navigator) {
 
 /*Service worker file should start here*/
 var CACHE_NAME = 'weatherPWA-cache-v1';
-var cacheWhitelist = ['weatherPWA-cache-v1'];
 var urlsToCache = [
 	'/',
 	'css/weatherApp.css',
@@ -43,21 +42,6 @@ self.addEventListener('install', function(e) {
 			})
 	);
 })
-
-
-self.addEventListener('activate', function(e) {
-	e.waitUntil(
-		caches.keys().then(function(cacheNames) {
-			return Promise.all(
-				cacheNames.map(function(cacheName) {
-					if(cacheWhitelist.indexOf(cacheName) === -1) {
-						return caches.delete(cacheName);
-					}
-				})
-			);
-		})
-	);
-});
 
 
 
