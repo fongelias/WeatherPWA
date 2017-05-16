@@ -25,11 +25,13 @@ if('serviceWorker' in navigator) {
 
 /*Service worker file should start here*/
 var CACHE_NAME = 'weatherPWA-cache-v1';
+var cacheWhitelist = ['weatherPWA-cache-v1'];
 var urlsToCache = [
 	'/',
 	'css/weatherApp.css',
 	'js/weatherApp.js'
 ];
+
 
 
 self.addEventListener('install', function(e) {
@@ -42,6 +44,24 @@ self.addEventListener('install', function(e) {
 	);
 })
 
+
+self.addEventListener('activate', function(e) {
+	e.waitUntil(
+		caches.keys().then(function(cacheNames) {
+			return Promise.all(
+				cacheNames.map(function(cacheName) {
+					if(cacheWhitelist.indexOf(cacheName) === -1) {
+						return caches.delete(cacheName);
+					}
+				})
+			);
+		})
+	);
+});
+
+
+
+
 self.addEventListener('fetch', function(e) {
 	e.respondWith(
 		caches.match(e.request)
@@ -50,7 +70,7 @@ self.addEventListener('fetch', function(e) {
 					return response;
 				}
 				//Clone request
-				var fetchRequest = event.request.clone();
+				var fetchRequest = e.request.clone();
 				//Return fetch
 				return fetch(fetchRequest).then(
 					function(response) {
@@ -64,7 +84,7 @@ self.addEventListener('fetch', function(e) {
 						//Send response to cache
 						caches.open(CACHE_NAME)
 							.then(function(cache) {
-								cache.put(event.request, responseToCache);
+								cache.put(e.request, responseToCache);
 							});
 
 						//Send response to browser
