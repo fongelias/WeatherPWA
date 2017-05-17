@@ -34,6 +34,7 @@ var urlsToCache = [
 
 
 self.addEventListener('install', function(e) {
+	console.log('serviceWorker.install()');
 	e.waitUntil(
 		caches.open(CACHE_NAME)
 			.then(function(cache) {
@@ -45,8 +46,26 @@ self.addEventListener('install', function(e) {
 
 
 
+self.addEventListener('activate', function(event) {
+	console.log('serviceWorker.activate()');
+	var cacheWhitelist = [];
+
+	event.waitUntil(
+		caches.keys().then(function(cacheNames) {
+			return Promise.all(
+				cacheNames.map(function(cacheName) {
+					if (cacheWhitelist.indexOf(cacheName) === -1) {
+						return caches.delete(cacheName);
+					}
+				})
+			);
+		})
+	);
+});
+
 
 self.addEventListener('fetch', function(e) {
+	console.log('serviceWorker.fetch()');
 	e.respondWith(
 		caches.match(e.request)
 			.then(function(response) {
