@@ -2,7 +2,7 @@
 -At root so the scope of the service Worker will be the entire origin
 -When one of the cached files are updated, update this file. Anything different
 in this file will cause the browser to treat this serviceWorker as a new worker
-
+-must be served from https
 
 
 

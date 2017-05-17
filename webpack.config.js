@@ -28,7 +28,8 @@ module.exports = {
 		}),
 		new CopyWebpackPlugin([
 			{from: './dev/index.html', to: './index.html'},
-			{from: './dev/serviceWorker.js', to: './serviceWorker.js'}
+			{from: './dev/serviceWorker.js', to: './serviceWorker.js'},
+			{from: './dev/manifest.json', to: './manifest.json'}
 		]),
 	    new webpack.DefinePlugin({
 	      'process.env.NODE_ENV': JSON.stringify('production')
