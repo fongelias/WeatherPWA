@@ -13,6 +13,9 @@ The service worker is configured to cache core files of the app shell. This allo
 ### Manifest
 The manifest enables app install banners when the user visits the page twice within a small window of time. It also specifies icons for use when it is installed.
 
+### Push Messaging (Not Implemented)
+The use of [push](https://developers.google.com/web/fundamentals/getting-started/codelabs/push-notifications/) will allow the app to notify the user when certain events occur, and also feel more like a native application.
+
 ### IndexedDB (IDB) (Not Implemented)
 The use of indexedDB allows the app to run offline with data loaded from a previous session.
 
